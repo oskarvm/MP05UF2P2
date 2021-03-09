@@ -19,6 +19,7 @@ class HashTableTest {
         HashTable ht = new HashTable();
         ht.put("put1","1put");
         ht.put("put2","2put");
+        ht.getCollisionsForKey("put1",2);
         ht.put(ht.getCollisionsForKey("put1"),"3put");
         ht.put(ht.getCollisionsForKey("put1"),"4put");
         ht.put("put2","5put");
