@@ -42,6 +42,7 @@ public class HashTable {
             temp.next = hashEntry;
             hashEntry.prev = temp;
         }
+        ITEMS++; //Añado un ITEMS++ para que sumara uno en el count() al crear una entrada nueva.
     }
 
     /**
