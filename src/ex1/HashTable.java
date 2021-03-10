@@ -42,7 +42,7 @@ public class HashTable {
             temp.next = hashEntry;
             hashEntry.prev = temp;
         }
-        ITEMS++; //Añado un ITEMS++ para que sumara uno en el count() al crear una entrada nueva.
+        ITEMS++; //Añado un ITEMS con ITEMS++ para que sumara uno en el count() al crear una entrada nueva.
     }
 
     /**
@@ -76,12 +76,15 @@ public class HashTable {
             while( !temp.key.equals(key))
                 temp = temp.next;
 
-            if(temp.prev == null) entries[hash] = null;             //esborrar element únic (no col·lissió)
-            else{
+            if(temp.prev == null && temp.next == null){ entries[hash] = null; //esborrar element únic (no col·lissió)
+
+            }
+            else if(temp.prev != null){
                 if(temp.next != null) temp.next.prev = temp.prev;   //esborrem temp, per tant actualitzem l'anterior al següent
                 temp.prev.next = temp.next;                         //esborrem temp, per tant actualitzem el següent de l'anterior
             }
         }
+        ITEMS--; //Quito un ITEMS con ITEMS-- para que reste uno en el count() al borrar una entrada nueva.
     }
 
     private int getHash(String key) {
@@ -213,7 +216,7 @@ public class HashTable {
 
     public static void main(String[] args) {
         HashTable hashTable = new HashTable();
-        
+
         // Put some key values.
         for(int i=0; i<30; i++) {
             final String key = String.valueOf(i);
